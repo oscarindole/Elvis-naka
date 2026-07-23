@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELVIS NAKA — Entre bombones</title>
 <meta name="description" content="Entre bombones — el LP de Elvis Naka. Canciones de amor de un lobo manso.">
+<!-- Vista previa en WhatsApp y redes sociales -->
+<meta property="og:type" content="music.album">
+<meta property="og:title" content="ELVIS NAKA — Entre bombones">
+<meta property="og:description" content="Canciones de amor de un lobo manso. Escucha y descarga el LP.">
+<meta property="og:url" content="https://oscarindole.github.io/Elvis-naka/">
+<meta property="og:image" content="https://oscarindole.github.io/Elvis-naka/naka-hero.jpg">
+<meta property="og:image:width" content="928">
+<meta property="og:image:height" content="1152">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ELVIS NAKA — Entre bombones">
+<meta name="twitter:description" content="Canciones de amor de un lobo manso. Escucha y descarga el LP.">
+<meta name="twitter:image" content="https://oscarindole.github.io/Elvis-naka/naka-hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -60,7 +72,22 @@ p em{color:var(--camiseta)}
 blockquote{border-left:2px solid var(--lampara);padding:6px 0 6px 24px;margin:40px 0;font-style:italic;font-size:1.25rem;line-height:1.6;color:var(--camiseta);max-width:46ch}
 blockquote cite{display:block;margin-top:12px;font-family:var(--mono);font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ventana)}
 
-/* ---------- TRACKLIST ---------- */
+/* ---------- SINGLE DE ADELANTO ---------- */
+.single{padding:90px 0;background:radial-gradient(ellipse 90% 70% at 50% 0%,rgba(224,49,47,.10),transparent 60%),linear-gradient(180deg,var(--noche),#0d151d)}
+.single-card{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;border:1px solid rgba(224,49,47,.35);background:rgba(18,32,43,.45);padding:36px 28px;position:relative}
+@media(min-width:840px){.single-card{grid-template-columns:.9fr 1.1fr;padding:48px}}
+.single-card::before{content:"SINGLE DE ADELANTO";position:absolute;top:-13px;left:28px;background:#e0312f;color:#fff;font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;padding:6px 14px}
+.single-img img{border:1px solid rgba(126,151,168,.2);width:100%}
+.single-title{font-family:var(--display);font-size:clamp(2.6rem,7vw,4.6rem);line-height:.95;text-transform:uppercase;color:var(--camiseta);margin-bottom:14px}
+.single-desc{font-style:italic;color:#cfd5d9;font-size:1.1rem;margin-bottom:26px;max-width:48ch}
+.single .p-btn{width:76px;height:76px}
+.single .p-btn .tri{border-top-width:20px;border-bottom-width:20px;border-left-width:34px}
+.single .p-btn.playing .tri{width:26px;height:36px;border-left-width:9px;border-right-width:9px}
+.single .p-title{display:none}
+.single .p-body{margin-left:0;max-width:none}
+.badge-single{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:#e0312f;border:1px solid rgba(224,49,47,.5);padding:8px 14px;margin-top:14px;text-decoration:none;transition:background .3s,color .3s}
+.badge-single:hover{background:#e0312f;color:#fff}
+
 .pasillo{position:relative;background:linear-gradient(180deg,var(--noche) 0%,#080d13 50%,var(--noche) 100%)}
 .pasillo::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(126,151,168,.25) 12%,rgba(201,143,69,.5) 92%,transparent);pointer-events:none}
 @media(max-width:839px){.pasillo::before{left:24px}}
@@ -123,6 +150,32 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
     </div>
   </div>
 </header>
+
+<!-- ============ SINGLE DE ADELANTO ============ -->
+<section id="single" class="single">
+  <div class="wrap">
+    <div class="single-card">
+      <figure class="single-img">
+        <img src="naka-04.jpg" alt="Manos de Elvis Naka sobre las cuerdas de la guitarra">
+      </figure>
+      <div>
+        <h2 class="single-title">Bailar mal</h2>
+        <p class="single-desc">«Nadie en esta pista se lo toma tan en serio como yo.» El primer adelanto de "Entre bombones": el himno torpe de quien no aprendió a bailar... y lo intenta igual.</p>
+        <div class="player" data-src="03-bailar-mal.mp3">
+          <div class="p-row">
+            <button class="p-btn" aria-label="Reproducir Bailar mal"><span class="tri"></span></button>
+            <h3 class="p-title">Bailar mal</h3>
+          </div>
+          <div class="p-body">
+            <div class="p-bar"><div class="p-fill"></div></div>
+            <div class="p-time"><span class="p-cur">0:00</span><span class="p-dur">–:––</span></div>
+            <a class="p-dl" href="03-bailar-mal.mp3" download>Descargar el single</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ TRACKLIST ============ -->
 <section id="tracklist" class="pasillo">
@@ -218,15 +271,15 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
    y aparecerán reproductor y botón de descarga.
    ========================================================== */
 const tracks = [
-  {n:"01", t:"Entre bombones",              d:"Un lobo perdido en la confitería.",                        audio:"01-entre-bombones.mp3"},
-  {n:"02", t:"La chica de la lavandería",   d:"Centrifuga inviernos. Deja limpio.",                       audio:"02-la-chica-de-la-lavanderia.mp3"},
-  {n:"03", t:"Bailar mal",                  d:"Nadie en esta pista se lo toma tan en serio.",             audio:"03-bailar-mal.mp3"},
-  {n:"04", t:"El pájaro de junio del 80",   d:"Yo guardo el invierno, tú guarda el volar.",               audio:""},
-  {n:"05", t:"Domingo sin guerra",          d:"La primera mañana en calma de su vida.",                   audio:""},
-  {n:"06", t:"Caramelos robados",           d:"Amor de adolescencia, dulce y canalla.",                   audio:""},
-  {n:"07", t:"No me mires así",             d:"Miedo a que te quieran de verdad.",                        audio:""},
-  {n:"08", t:"Flores en el desguace",       d:"Belleza donde nadie mira.",                                audio:""},
-  {n:"09", t:"Entre bombones (reprise)",    d:"El cierre, en directo, con risas al final.",               audio:""}
+  {n:"01", t:"Entre bombones",              d:"Un lobo perdido en la confitería.",                        audio:"", single:false},
+  {n:"02", t:"La chica de la lavandería",   d:"Centrifuga inviernos. Deja limpio.",                       audio:"", single:false},
+  {n:"03", t:"Bailar mal",                  d:"Nadie en esta pista se lo toma tan en serio.",             audio:"", single:true},
+  {n:"04", t:"El pájaro de junio del 80",   d:"Yo guardo el invierno, tú guarda el volar.",               audio:"", single:false},
+  {n:"05", t:"Domingo sin guerra",          d:"La primera mañana en calma de su vida.",                   audio:"", single:false},
+  {n:"06", t:"Caramelos robados",           d:"Amor de adolescencia, dulce y canalla.",                   audio:"", single:false},
+  {n:"07", t:"No me mires así",             d:"Miedo a que te quieran de verdad.",                        audio:"", single:false},
+  {n:"08", t:"Flores en el desguace",       d:"Belleza donde nadie mira.",                                audio:"", single:false},
+  {n:"09", t:"Entre bombones (reprise)",    d:"El cierre, en directo, con risas al final.",               audio:"", single:false}
 ];
 
 const fmt = s => isNaN(s) ? "0:00" : `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
@@ -235,21 +288,11 @@ document.getElementById('tracks').innerHTML = tracks.map((tr,i) => `
   <article class="track" tabindex="0">
     <span class="t-num">${tr.n}</span>
     <div>
-      ${tr.audio ? `` : `<h3 class="t-title">${tr.t}</h3>`}
-      ${tr.audio ? `` : `<p class="t-desc">${tr.d}</p>`}
-      ${tr.audio ? `
-      <div class="player" data-src="${tr.audio}" data-i="${i}">
-        <div class="p-row">
-          <button class="p-btn" aria-label="Reproducir ${tr.t}"><span class="tri"></span></button>
-          <h3 class="p-title">${tr.t}</h3>
-        </div>
-        <div class="p-body">
-          <p class="t-desc">${tr.d}</p>
-          <div class="p-bar"><div class="p-fill"></div></div>
-          <div class="p-time"><span class="p-cur">0:00</span><span class="p-dur">–:––</span></div>
-          <a class="p-dl" href="${tr.audio}" download>Descargar</a>
-        </div>
-      </div>` : `<span class="t-soon">Próximamente</span>`}
+      <h3 class="t-title">${tr.t}</h3>
+      <p class="t-desc">${tr.d}</p>
+      ${tr.single
+        ? `<a class="badge-single" href="#single">▲ Single de adelanto — escúchalo arriba</a>`
+        : `<span class="t-soon">Próximamente</span>`}
     </div>
   </article>`).join('');
 
