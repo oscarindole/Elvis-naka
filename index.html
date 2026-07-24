@@ -92,6 +92,10 @@ blockquote cite{display:block;margin-top:12px;font-family:var(--mono);font-style
 .single .p-body{margin-left:0;max-width:none}
 .single-cta{font-family:var(--display);font-size:clamp(1.3rem,3.4vw,2rem);text-transform:uppercase;letter-spacing:.03em;color:#e0312f;margin-bottom:10px;text-shadow:0 0 24px rgba(224,49,47,.45)}
 .cta-arrow{display:inline-block;animation:salta 1.2s ease-in-out infinite}
+.aviso-nuevo{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:rgba(224,49,47,.92);padding:10px 16px;border-radius:999px;text-decoration:none;margin-bottom:16px;transition:transform .2s}
+.aviso-nuevo:hover{transform:scale(1.04)}
+.aviso-nuevo .punto{width:8px;height:8px;border-radius:50%;background:#fff;animation:parpadea 1.4s ease-in-out infinite}
+@keyframes parpadea{0%,100%{opacity:1}50%{opacity:.25}}
 .contador{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lampara);border:1px solid rgba(201,143,69,.4);padding:10px 16px;border-radius:4px}
 .contador .num{font-size:1.05rem;color:var(--camiseta);letter-spacing:.06em}
 @keyframes salta{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
@@ -178,6 +182,7 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
   </div>
   <div class="hero-inner wrap">
     <h1 class="sr-only">Elvis Naka</h1>
+    <a class="aviso-nuevo" href="#trackEB"><span class="punto"></span> NUEVO · «Entre bombones» ya suena aquí</a>
     <p class="eyebrow">Primer LP · 2026</p>
     <div class="album-line">
       <span class="album-title">«Entre bombones»</span>
@@ -356,7 +361,7 @@ quiero que me enseñes a bailar mejor.</strong></div>
    y aparecerán reproductor y botón de descarga.
    ========================================================== */
 const tracks = [
-  {n:"01", t:"Entre bombones",              d:"Un lobo perdido en la confitería.",                        audio:"", single:false},
+  {n:"01", t:"Entre bombones",              d:"Un lobo perdido en la confitería.",                        audio:"01-entre-bombones-v2.mp3", single:false, aid:"trackEB", contador:"numEB"},
   {n:"02", t:"La chica de la lavandería",   d:"Centrifuga inviernos. Deja limpio.",                       audio:"", single:false},
   {n:"03", t:"Bailo mal",                  d:"Nadie en esta pista se lo toma tan en serio.",             audio:"", single:true},
   {n:"04", t:"El pájaro de junio del 80",   d:"Yo guardo el invierno, tú guarda el volar.",               audio:"", single:false},
@@ -415,7 +420,7 @@ document.querySelectorAll('.player').forEach(pl => {
     if (current && current !== audio){ current.pause(); document.querySelectorAll('.p-btn').forEach(b=>b.classList.remove('playing')); }
     if (audio.paused){
       const p = audio.play();
-      if (p) p.then(()=>{ btn.classList.add('playing'); current = audio; if (pl.closest('.single')) cuentaEscucha(); })
+      if (p) p.then(()=>{ btn.classList.add('playing'); current = audio; if (pl.closest('.single')) cuentaEscucha(); else if (pl.dataset.src.includes('entre-bombones')) cuentaEB(); })
              .catch(err => { console.error('No se pudo reproducir:', err); alert('No se pudo reproducir el audio. Comprueba que la carpeta "audio" está junto a index.html.'); });
       else { btn.classList.add('playing'); current = audio; }
     }
@@ -439,6 +444,18 @@ function cuentaEscucha(){
   if (escuchaContada) return; escuchaContada = true;
   fetch(API_CONT + '/up').then(r=>r.json()).then(d=>pintaEscuchas(d.count||0)).catch(()=>{});
 }
+
+/* Contador de Entre bombones */
+const BASE_EB = 200;
+const API_EB = 'https://api.counterapi.dev/v1/elvisnaka-oscarindole/entrebombones';
+function pintaEB(n){ const e=document.getElementById('numEB'); if(e) e.textContent = (BASE_EB + n).toLocaleString('es-ES'); }
+let ebContada = false;
+function cuentaEB(){
+  if (ebContada) return; ebContada = true;
+  fetch(API_EB + '/up').then(r=>r.json()).then(d=>pintaEB(d.count||0)).catch(()=>{});
+}
+
+fetch(API_EB).then(r=>r.json()).then(d=>pintaEB(d.count||0)).catch(()=>{ const e=document.getElementById('numEB'); if(e) e.textContent = BASE_EB.toLocaleString('es-ES') + '+'; });
 
 /* Pasador */
 const tr = document.getElementById('slTrack');
