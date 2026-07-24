@@ -192,9 +192,6 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
 <!-- ============ SINGLE DE ADELANTO ============ -->
 <section id="single" class="single">
   <div class="wrap">
-    <div class="single-head">
-      <h2>Bailo mal</h2>
-    </div>
     <div class="single-card">
       <figure class="single-img">
         <img src="naka-04-v3.jpg" alt="Elvis Naka tocando la Telecaster en el escenario, entre luces">
@@ -406,7 +403,7 @@ me rindo dulce, me rindo, vida mía.</strong></div>
   <p class="foot-meta">
     ELVIS NAKA ES UN PROYECTO DE FICCIÓN MUSICAL<br>
     © 2026 · ELIGE EL QUE TE VA A MATAR<br>
-    <span style="opacity:.55">VERSIÓN 24-JUL · 22:10</span>
+    <span style="opacity:.55">VERSIÓN 24-JUL · 22:25</span>
   </p>
 </footer>
 
@@ -492,7 +489,7 @@ document.querySelectorAll('.player').forEach(pl => {
 });
 
 /* Auto-actualizador: si hay versión nueva publicada, recarga la página fresca */
-const VERSION_LOCAL = "2026-07-24-2210";
+const VERSION_LOCAL = "2026-07-24-2225";
 fetch('version.json?t=' + Date.now(), {cache:'no-store'})
   .then(r => r.json())
   .then(d => {
