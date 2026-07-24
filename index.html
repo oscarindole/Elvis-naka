@@ -73,18 +73,26 @@ blockquote{border-left:2px solid var(--lampara);padding:6px 0 6px 24px;margin:40
 blockquote cite{display:block;margin-top:12px;font-family:var(--mono);font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ventana)}
 
 /* ---------- SINGLE DE ADELANTO ---------- */
-.single{padding:90px 0;background:radial-gradient(ellipse 90% 70% at 50% 0%,rgba(224,49,47,.10),transparent 60%),linear-gradient(180deg,var(--noche),#0d151d)}
-.single-card{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;border:1px solid rgba(224,49,47,.35);background:rgba(18,32,43,.45);padding:36px 28px;position:relative}
-@media(min-width:840px){.single-card{grid-template-columns:.9fr 1.1fr;padding:48px}}
-.single-card::before{content:"SINGLE DE ADELANTO";position:absolute;top:-13px;left:28px;background:#e0312f;color:#fff;font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;padding:6px 14px}
-.single-img img{border:1px solid rgba(126,151,168,.2);width:100%}
-.single-title{font-family:var(--display);font-size:clamp(2.6rem,7vw,4.6rem);line-height:.95;text-transform:uppercase;color:var(--camiseta);margin-bottom:14px}
-.single-desc{font-style:italic;color:#cfd5d9;font-size:1.1rem;margin-bottom:26px;max-width:48ch}
-.single .p-btn{width:76px;height:76px}
-.single .p-btn .tri{border-top-width:20px;border-bottom-width:20px;border-left-width:34px}
-.single .p-btn.playing .tri{width:26px;height:36px;border-left-width:9px;border-right-width:9px}
+.single{padding:70px 0 110px;background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(224,49,47,.16),transparent 65%),linear-gradient(180deg,var(--noche),#0d151d)}
+.single-head{text-align:center;margin-bottom:44px}
+.single-kicker{display:inline-block;background:#e0312f;color:#fff;font-family:var(--mono);font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;padding:10px 22px;margin-bottom:18px}
+.single-head h2{font-family:var(--display);font-size:clamp(3rem,10vw,6.5rem);line-height:.95;text-transform:uppercase;color:var(--camiseta);margin:0;text-shadow:0 0 60px rgba(224,49,47,.35)}
+.single-head .single-sub{font-style:italic;color:var(--lampara);font-size:clamp(1rem,2.6vw,1.3rem);margin-top:12px}
+.single-card{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;border:2px solid #e0312f;background:rgba(18,32,43,.6);padding:36px 28px;position:relative;box-shadow:0 0 70px rgba(224,49,47,.22),inset 0 0 60px rgba(224,49,47,.05)}
+@media(min-width:840px){.single-card{grid-template-columns:.9fr 1.1fr;padding:52px}}
+.single-img img{border:1px solid rgba(224,49,47,.3);width:100%}
+.single-title{font-family:var(--display);font-size:clamp(2.4rem,6vw,4rem);line-height:.95;text-transform:uppercase;color:var(--camiseta);margin-bottom:14px}
+.single-desc{font-style:italic;color:#dfe4e8;font-size:1.12rem;margin-bottom:28px;max-width:48ch}
+.single .p-btn{width:96px;height:96px;position:relative}
+.single .p-btn::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(224,49,47,.5);animation:pulso 2s ease-out infinite}
+@keyframes pulso{0%{transform:scale(.85);opacity:.9}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
+.single .p-btn .tri{border-top-width:26px;border-bottom-width:26px;border-left-width:44px;filter:drop-shadow(0 0 14px rgba(224,49,47,.6))}
+.single .p-btn.playing .tri{width:32px;height:46px;border-left-width:11px;border-right-width:11px}
 .single .p-title{display:none}
 .single .p-body{margin-left:0;max-width:none}
+.single .p-dl{font-size:.72rem;padding:12px 20px;border-color:#e0312f;color:#fff;background:rgba(224,49,47,.15)}
+.single .p-dl:hover{background:#e0312f}
+@media(prefers-reduced-motion:reduce){.single .p-btn::before{animation:none}}
 .badge-single{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:#e0312f;border:1px solid rgba(224,49,47,.5);padding:8px 14px;margin-top:14px;text-decoration:none;transition:background .3s,color .3s}
 .badge-single:hover{background:#e0312f;color:#fff}
 
@@ -154,13 +162,18 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
 <!-- ============ SINGLE DE ADELANTO ============ -->
 <section id="single" class="single">
   <div class="wrap">
+    <div class="single-head">
+      <span class="single-kicker">Nuevo single de adelanto</span>
+      <h2>Bailar mal</h2>
+      <p class="single-sub">El primer adelanto de «Entre bombones» — escúchalo y descárgalo gratis</p>
+    </div>
     <div class="single-card">
       <figure class="single-img">
         <img src="naka-04.jpg" alt="Manos de Elvis Naka sobre las cuerdas de la guitarra">
       </figure>
       <div>
-        <h2 class="single-title">Bailar mal</h2>
-        <p class="single-desc">«Nadie en esta pista se lo toma tan en serio como yo.» El primer adelanto de "Entre bombones": el himno torpe de quien no aprendió a bailar... y lo intenta igual.</p>
+        <h3 class="single-title">Bailar mal</h3>
+        <p class="single-desc">«Nadie en esta pista se lo toma tan en serio como yo.» El himno torpe de quien no aprendió a bailar... y lo intenta igual.</p>
         <div class="player" data-src="03-bailar-mal.mp3">
           <div class="p-row">
             <button class="p-btn" aria-label="Reproducir Bailar mal"><span class="tri"></span></button>
