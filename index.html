@@ -182,7 +182,6 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
   </div>
   <div class="hero-inner wrap">
     <h1 class="sr-only">Elvis Naka</h1>
-    <a class="aviso-nuevo" href="#cardEB"><span class="punto"></span> NUEVO · «Entre bombones» ya suena aquí</a>
     <p class="eyebrow">Primer LP · 2026</p>
     <div class="album-line">
       <span class="album-title">«Entre bombones»</span>
@@ -497,7 +496,7 @@ document.querySelectorAll('.player').forEach(pl => {
 });
 
 /* Auto-actualizador: si hay versión nueva publicada, recarga la página fresca */
-const VERSION_LOCAL = "2026-07-24-2040";
+const VERSION_LOCAL = "2026-07-24-2110";
 fetch('version.json?t=' + Date.now(), {cache:'no-store'})
   .then(r => r.json())
   .then(d => {
