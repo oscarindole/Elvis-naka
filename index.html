@@ -182,7 +182,7 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
   </div>
   <div class="hero-inner wrap">
     <h1 class="sr-only">Elvis Naka</h1>
-    <a class="aviso-nuevo" href="#trackEB"><span class="punto"></span> NUEVO · «Entre bombones» ya suena aquí</a>
+    <a class="aviso-nuevo" href="#cardEB"><span class="punto"></span> NUEVO · «Entre bombones» ya suena aquí</a>
     <p class="eyebrow">Primer LP · 2026</p>
     <div class="album-line">
       <span class="album-title">«Entre bombones»</span>
@@ -250,6 +250,66 @@ Progreso.
 <strong>¡Bailo mal!
 Pero si esto es hacerlo mal,
 quiero que me enseñes a bailar mejor.</strong></div>
+      </div>
+    </div>
+
+    <div class="single-card" id="cardEB" style="margin-top:56px">
+      <figure class="single-img">
+        <img src="naka-06-v3.jpg" alt="Elvis Naka ante el micrófono vintage, terciopelo rojo al fondo">
+      </figure>
+      <div>
+        <h3 class="single-title">Entre bombones</h3>
+        <p class="single-desc">«Un lobo perdido en la confitería.» La canción que da nombre al disco: el tipo duro deshaciéndose, con armónica y una ceja levantada.</p>
+        <p class="single-cta">Para escucharla, pincha aquí <span class="cta-arrow">↓</span></p>
+        <div class="player" data-src="01-entre-bombones-v2.mp3">
+          <div class="p-row">
+            <button class="p-btn" aria-label="Reproducir Entre bombones"><span class="tri"></span></button>
+            <h3 class="p-title">Entre bombones</h3>
+          </div>
+          <div class="p-body">
+            <div class="p-bar"><div class="p-fill"></div></div>
+            <div class="p-time"><span class="p-cur">0:00</span><span class="p-dur">–:––</span></div>
+            <a class="p-dl" href="01-entre-bombones-v2.mp3" download>Descargar la canción</a>
+            <div class="contador" aria-live="polite">♪ <span class="num" id="numEB">…</span> escuchas</div>
+          </div>
+        </div>
+      <div class="letra">
+        <h4>La letra</h4>
+        <div class="letra-cols">Yo venía de masticar inviernos,
+de cenar silencio con pan.
+Y me abres una caja de domingo:
+"elige el que te va a matar".
+
+Y yo que sabía aguantar de todo...
+menos esto, menos esto.
+
+<strong>Entre bombones
+un lobo perdido en la confitería.
+Entre bombones
+se me derriten las coartadas, vida mía.</strong>
+
+Aprendí a leer el cielo en las miradas
+por si olía a tempestad.
+Contigo el parte siempre marca sol
+y no tengo dónde refugiarme ya.
+
+Y yo que sabía escaparme de todo...
+menos de esto, menos de esto.
+
+<strong>Entre bombones
+un lobo perdido en la confitería.
+Entre bombones
+se me derriten las coartadas, vida mía.</strong>
+
+No sé bailar despacio.
+No sé querer sin mirar la puerta.
+Sé aguantar de pie cualquier invierno...
+y esto — te lo juro — asusta más.
+
+<strong>Entre bombones
+un lobo manso en la confitería.
+Entre bombones
+me rindo dulce, me rindo, vida mía.</strong></div>
       </div>
     </div>
   </div>
@@ -361,7 +421,7 @@ quiero que me enseñes a bailar mejor.</strong></div>
    y aparecerán reproductor y botón de descarga.
    ========================================================== */
 const tracks = [
-  {n:"01", t:"Entre bombones",              d:"Un lobo perdido en la confitería.",                        audio:"01-entre-bombones-v2.mp3", single:false, aid:"trackEB", contador:"numEB"},
+  {n:"01", t:"Entre bombones",              d:"Un lobo perdido en la confitería.",                        audio:"", single:false, arriba:"#cardEB"},
   {n:"02", t:"La chica de la lavandería",   d:"Centrifuga inviernos. Deja limpio.",                       audio:"", single:false},
   {n:"03", t:"Bailo mal",                  d:"Nadie en esta pista se lo toma tan en serio.",             audio:"", single:true},
   {n:"04", t:"El pájaro de junio del 80",   d:"Yo guardo el invierno, tú guarda el volar.",               audio:"", single:false},
@@ -382,6 +442,8 @@ document.getElementById('tracks').innerHTML = tracks.map((tr,i) => `
       <p class="t-desc">${tr.d}</p>
       ${tr.single
         ? `<a class="badge-single" href="#single">▲ Single de adelanto — escúchalo arriba</a>`
+        : tr.arriba
+        ? `<a class="badge-single" href="${tr.arriba}">▲ Escúchala arriba</a>`
         : `<span class="t-soon">Próximamente</span>`}
     </div>
   </article>`).join('');
@@ -420,7 +482,7 @@ document.querySelectorAll('.player').forEach(pl => {
     if (current && current !== audio){ current.pause(); document.querySelectorAll('.p-btn').forEach(b=>b.classList.remove('playing')); }
     if (audio.paused){
       const p = audio.play();
-      if (p) p.then(()=>{ btn.classList.add('playing'); current = audio; if (pl.closest('.single')) cuentaEscucha(); else if (pl.dataset.src.includes('entre-bombones')) cuentaEB(); })
+      if (p) p.then(()=>{ btn.classList.add('playing'); current = audio; if (pl.dataset.src.includes('bailar-mal')) cuentaEscucha(); else if (pl.dataset.src.includes('entre-bombones')) cuentaEB(); })
              .catch(err => { console.error('No se pudo reproducir:', err); alert('No se pudo reproducir el audio. Comprueba que la carpeta "audio" está junto a index.html.'); });
       else { btn.classList.add('playing'); current = audio; }
     }
