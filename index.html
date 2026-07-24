@@ -496,6 +496,18 @@ document.querySelectorAll('.player').forEach(pl => {
   });
 });
 
+/* Auto-actualizador: si hay versión nueva publicada, recarga la página fresca */
+const VERSION_LOCAL = "2026-07-24-2040";
+fetch('version.json?t=' + Date.now(), {cache:'no-store'})
+  .then(r => r.json())
+  .then(d => {
+    const u = new URL(location);
+    if (d.v && d.v !== VERSION_LOCAL && u.searchParams.get('v') !== d.v) {
+      u.searchParams.set('v', d.v);
+      location.replace(u.toString());
+    }
+  }).catch(()=>{});
+
 /* Contador de escuchas — base 350 + recuento global compartido */
 const BASE_ESCUCHAS = 350;
 const API_CONT = 'https://api.counterapi.dev/v1/elvisnaka-oscarindole/bailomal';
