@@ -59,7 +59,7 @@ h1.masthead{font-family:var(--display);font-size:clamp(3.4rem,13vw,10.5rem);line
 
 /* ---------- SECCIONES ---------- */
 section{padding:110px 0}
-.sec-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--lampara);margin-bottom:26px}
+.sec-label{font-family:var(--mono);font-size:1.44rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lampara);margin-bottom:30px;line-height:1.4}
 h2{font-family:var(--display);font-size:clamp(1.9rem,4.5vw,3.2rem);text-transform:uppercase;letter-spacing:.02em;line-height:1.05;margin-bottom:32px;color:var(--camiseta)}
 p{max-width:62ch;margin-bottom:1.25em;font-size:1.06rem;color:#cfd5d9}
 p em{color:var(--camiseta)}
@@ -406,7 +406,7 @@ me rindo dulce, me rindo, vida mía.</strong></div>
   <p class="foot-meta">
     ELVIS NAKA ES UN PROYECTO DE FICCIÓN MUSICAL<br>
     © 2026 · ELIGE EL QUE TE VA A MATAR<br>
-    <span style="opacity:.55">VERSIÓN 24-JUL · 21:55</span>
+    <span style="opacity:.55">VERSIÓN 24-JUL · 22:10</span>
   </p>
 </footer>
 
@@ -492,7 +492,7 @@ document.querySelectorAll('.player').forEach(pl => {
 });
 
 /* Auto-actualizador: si hay versión nueva publicada, recarga la página fresca */
-const VERSION_LOCAL = "2026-07-24-2155";
+const VERSION_LOCAL = "2026-07-24-2210";
 fetch('version.json?t=' + Date.now(), {cache:'no-store'})
   .then(r => r.json())
   .then(d => {
