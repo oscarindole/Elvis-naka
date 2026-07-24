@@ -50,11 +50,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;op
 .hero-img img.main{position:relative;width:100%;height:100%;object-fit:contain;object-position:center top;filter:saturate(.9)}
 .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,17,24,0) 0%,rgba(10,17,24,0) 55%,rgba(10,17,24,.85) 88%,var(--noche) 100%)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.hero-inner{width:100%;padding:0 24px 8vh}
-.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--ventana);margin-bottom:14px}
+.hero-inner{width:100%;padding:0 24px 8vh;text-align:center}
+.eyebrow{font-family:var(--mono);font-size:clamp(.85rem,2.2vw,1.1rem);letter-spacing:.4em;text-transform:uppercase;color:var(--ventana);margin-bottom:14px}
 h1.masthead{font-family:var(--display);font-size:clamp(3.4rem,13vw,10.5rem);line-height:.92;letter-spacing:.015em;text-transform:uppercase;color:var(--camiseta);text-shadow:0 2px 40px rgba(0,0,0,.6)}
-.album-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px 26px;margin-top:18px}
-.album-title{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3.4vw,2.1rem);color:var(--lampara)}
+.album-line{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:14px 26px;margin-top:14px}
+.album-title{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,6vw,3.4rem);color:var(--lampara)}
 .album-tag{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;color:var(--ventana)}
 
 /* ---------- SECCIONES ---------- */
@@ -185,7 +185,6 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
     <p class="eyebrow">Primer LP · 2026</p>
     <div class="album-line">
       <span class="album-title">«Entre bombones»</span>
-      <span class="album-tag">CANCIONES DE AMOR DE UN LOBO MANSO</span>
     </div>
   </div>
 </header>
@@ -496,7 +495,7 @@ document.querySelectorAll('.player').forEach(pl => {
 });
 
 /* Auto-actualizador: si hay versión nueva publicada, recarga la página fresca */
-const VERSION_LOCAL = "2026-07-24-2110";
+const VERSION_LOCAL = "2026-07-24-2125";
 fetch('version.json?t=' + Date.now(), {cache:'no-store'})
   .then(r => r.json())
   .then(d => {
