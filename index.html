@@ -165,7 +165,7 @@ blockquote cite{display:block;margin-top:12px;font-family:var(--mono);font-style
 footer{position:relative;padding:140px 24px 60px;text-align:center;overflow:hidden}
 footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:translateX(-50%);width:640px;height:420px;background:radial-gradient(ellipse at center,rgba(201,143,69,.22),rgba(201,143,69,.06) 45%,transparent 70%);pointer-events:none}
 .foot-mast{font-family:var(--display);font-size:clamp(2rem,7vw,4.4rem);text-transform:uppercase;color:var(--camiseta)}
-.foot-line{font-family:var(--serif);font-style:italic;color:var(--lampara);margin-top:10px;font-size:1.05rem}
+.foot-line{font-family:var(--serif);font-style:italic;color:var(--lampara);margin-top:14px;font-size:2.1rem;line-height:1.4;text-align:center}
 .foot-meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ventana);margin-top:44px;line-height:2}
 
 :focus-visible{outline:2px solid var(--lampara);outline-offset:3px}
@@ -399,11 +399,11 @@ me rindo dulce, me rindo, vida mía.</strong></div>
 <!-- ============ FOOTER ============ -->
 <footer>
   <p class="foot-mast">Elvis Naka</p>
-  <p class="foot-line">«Entre bombones» — se publica canción a canción. Vuelve pronto.</p>
+  <p class="foot-line">«Entre bombones» — se publica canción a canción.<br>Vuelve pronto.</p>
   <p class="foot-meta">
     ELVIS NAKA ES UN PROYECTO DE FICCIÓN MUSICAL<br>
     © 2026 · ELIGE EL QUE TE VA A MATAR<br>
-    <span style="opacity:.55">VERSIÓN 24-JUL · 22:25</span>
+    <span style="opacity:.55">VERSIÓN 24-JUL · 22:40</span>
   </p>
 </footer>
 
@@ -489,7 +489,7 @@ document.querySelectorAll('.player').forEach(pl => {
 });
 
 /* Auto-actualizador: si hay versión nueva publicada, recarga la página fresca */
-const VERSION_LOCAL = "2026-07-24-2225";
+const VERSION_LOCAL = "2026-07-24-2240";
 fetch('version.json?t=' + Date.now(), {cache:'no-store'})
   .then(r => r.json())
   .then(d => {
