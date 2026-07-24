@@ -90,6 +90,9 @@ blockquote cite{display:block;margin-top:12px;font-family:var(--mono);font-style
 .single .p-btn.playing .tri{width:32px;height:46px;border-left-width:11px;border-right-width:11px}
 .single .p-title{display:none}
 .single .p-body{margin-left:0;max-width:none}
+.single-cta{font-family:var(--display);font-size:clamp(1.3rem,3.4vw,2rem);text-transform:uppercase;letter-spacing:.03em;color:#e0312f;margin-bottom:10px;text-shadow:0 0 24px rgba(224,49,47,.45)}
+.cta-arrow{display:inline-block;animation:salta 1.2s ease-in-out infinite}
+@keyframes salta{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 .single .p-dl{font-size:.72rem;padding:12px 20px;border-color:#e0312f;color:#fff;background:rgba(224,49,47,.15)}
 .single .p-dl:hover{background:#e0312f}
 @media(prefers-reduced-motion:reduce){.single .p-btn::before{animation:none}}
@@ -164,7 +167,7 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
   <div class="wrap">
     <div class="single-head">
       <span class="single-kicker">Nuevo single de adelanto</span>
-      <h2>Bailar mal</h2>
+      <h2>Bailo mal</h2>
       <p class="single-sub">El primer adelanto de «Entre bombones» — escúchalo y descárgalo gratis</p>
     </div>
     <div class="single-card">
@@ -172,11 +175,12 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
         <img src="naka-04.jpg" alt="Manos de Elvis Naka sobre las cuerdas de la guitarra">
       </figure>
       <div>
-        <h3 class="single-title">Bailar mal</h3>
+        <h3 class="single-title">Bailo mal</h3>
         <p class="single-desc">«Nadie en esta pista se lo toma tan en serio como yo.» El himno torpe de quien no aprendió a bailar... y lo intenta igual.</p>
+        <p class="single-cta">Para bailar, pincha aquí <span class="cta-arrow">↓</span></p>
         <div class="player" data-src="03-bailar-mal.mp3">
           <div class="p-row">
-            <button class="p-btn" aria-label="Reproducir Bailar mal"><span class="tri"></span></button>
+            <button class="p-btn" aria-label="Reproducir Bailo mal"><span class="tri"></span></button>
             <h3 class="p-title">Bailar mal</h3>
           </div>
           <div class="p-body">
@@ -286,7 +290,7 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
 const tracks = [
   {n:"01", t:"Entre bombones",              d:"Un lobo perdido en la confitería.",                        audio:"", single:false},
   {n:"02", t:"La chica de la lavandería",   d:"Centrifuga inviernos. Deja limpio.",                       audio:"", single:false},
-  {n:"03", t:"Bailar mal",                  d:"Nadie en esta pista se lo toma tan en serio.",             audio:"", single:true},
+  {n:"03", t:"Bailo mal",                  d:"Nadie en esta pista se lo toma tan en serio.",             audio:"", single:true},
   {n:"04", t:"El pájaro de junio del 80",   d:"Yo guardo el invierno, tú guarda el volar.",               audio:"", single:false},
   {n:"05", t:"Domingo sin guerra",          d:"La primera mañana en calma de su vida.",                   audio:"", single:false},
   {n:"06", t:"Caramelos robados",           d:"Amor de adolescencia, dulce y canalla.",                   audio:"", single:false},
