@@ -92,6 +92,8 @@ blockquote cite{display:block;margin-top:12px;font-family:var(--mono);font-style
 .single .p-body{margin-left:0;max-width:none}
 .single-cta{font-family:var(--display);font-size:clamp(1.3rem,3.4vw,2rem);text-transform:uppercase;letter-spacing:.03em;color:#e0312f;margin-bottom:10px;text-shadow:0 0 24px rgba(224,49,47,.45)}
 .cta-arrow{display:inline-block;animation:salta 1.2s ease-in-out infinite}
+.contador{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lampara);border:1px solid rgba(201,143,69,.4);padding:10px 16px;border-radius:4px}
+.contador .num{font-size:1.05rem;color:var(--camiseta);letter-spacing:.06em}
 @keyframes salta{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 .single .p-dl{font-size:.72rem;padding:12px 20px;border-color:#e0312f;color:#fff;background:rgba(224,49,47,.15)}
 .single .p-dl:hover{background:#e0312f}
@@ -209,6 +211,7 @@ footer::before{content:"";position:absolute;left:50%;bottom:-140px;transform:tra
             <div class="p-bar"><div class="p-fill"></div></div>
             <div class="p-time"><span class="p-cur">0:00</span><span class="p-dur">–:––</span></div>
             <a class="p-dl" href="03-bailar-mal.mp3" download>Descargar el single</a>
+          <div class="contador" aria-live="polite">♪ <span class="num" id="numEscuchas">…</span> escuchas</div>
           </div>
         </div>
       </div>
@@ -412,7 +415,7 @@ document.querySelectorAll('.player').forEach(pl => {
     if (current && current !== audio){ current.pause(); document.querySelectorAll('.p-btn').forEach(b=>b.classList.remove('playing')); }
     if (audio.paused){
       const p = audio.play();
-      if (p) p.then(()=>{ btn.classList.add('playing'); current = audio; })
+      if (p) p.then(()=>{ btn.classList.add('playing'); current = audio; if (pl.closest('.single')) cuentaEscucha(); })
              .catch(err => { console.error('No se pudo reproducir:', err); alert('No se pudo reproducir el audio. Comprueba que la carpeta "audio" está junto a index.html.'); });
       else { btn.classList.add('playing'); current = audio; }
     }
@@ -424,6 +427,18 @@ document.querySelectorAll('.player').forEach(pl => {
     audio.currentTime = ((e.clientX - r.left)/r.width) * audio.duration;
   });
 });
+
+/* Contador de escuchas — base 350 + recuento global compartido */
+const BASE_ESCUCHAS = 350;
+const API_CONT = 'https://api.counterapi.dev/v1/elvisnaka-oscarindole/bailomal';
+const elNum = document.getElementById('numEscuchas');
+function pintaEscuchas(n){ if(elNum) elNum.textContent = (BASE_ESCUCHAS + n).toLocaleString('es-ES'); }
+fetch(API_CONT).then(r=>r.json()).then(d=>pintaEscuchas(d.count||0)).catch(()=>{ if(elNum) elNum.textContent = BASE_ESCUCHAS.toLocaleString('es-ES') + '+'; });
+let escuchaContada = false;
+function cuentaEscucha(){
+  if (escuchaContada) return; escuchaContada = true;
+  fetch(API_CONT + '/up').then(r=>r.json()).then(d=>pintaEscuchas(d.count||0)).catch(()=>{});
+}
 
 /* Pasador */
 const tr = document.getElementById('slTrack');
